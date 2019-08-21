@@ -1,0 +1,619 @@
+@charset "UTF-8";
+@import url(fonts.css);
+
+
+/* ======================================================
+RESET DEFAULT STYLES
+====================================================== */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, main, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+/* ======================================================
+BASICS
+====================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html, body {
+    width: 100%;
+    min-width: 1024px;
+	height: 100%;
+    background: #ffffff;
+    color: #555555;
+    font-size: 1rem;
+    font-family: 'YouYuan','Roboto', Arial, Verdana, Helvetica, sans-serif;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-smoothing: antialiased;
+    z-index: 9999;
+}
+body{
+	display: flex;
+	flex-direction: column;
+}
+body.errorpage {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column; 
+}
+h1, h2, h3, h4, h5, h6 {
+    text-transform: uppercase;
+}
+/* Always use heading 1 for page title */ 
+h1 {
+    font-size: 2rem;
+    color: #333333;
+    margin-bottom: 20px;
+}
+h2 {
+    font-size: 1.5rem;
+    margin: 20px 0 15px 0;
+}
+h3 {
+	color: #f05a23;
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+}
+p {
+    font-size: 100%;
+    line-height: 150%;
+    margin-bottom: 20px;
+}
+p.sysMsg {
+	font-size: 85%;
+	margin: 0;
+	padding: 10px 0;
+}
+p.sysMsg.error {
+	color: #C50206;
+}
+p.sysMsg.success {
+	color: #249e00;
+}
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+a {
+    color: #333333;
+    text-decoration: none;
+}
+a:hover {
+	color: #f05a23;
+}
+
+.loading-animation {
+	position: absolute;
+	font-size: 30px;
+	color: #f05a23;
+	top: 50%;
+	left: 50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+}
+td.align-center {
+	text-align: center;
+}
+/* ======================================================
+FORM ELEMENTS
+====================================================== */
+fieldset {
+	max-width: 1024px;
+}
+form {
+	width: 100%;
+	clear: both;
+	overflow: auto;
+}
+/* This is not a fieldset element, 
+use this to clear float fieldset elements */
+.fieldset-container {
+	width: 100%;
+	clear: both;
+	overflow: hidden;
+}
+input, select, label {
+	display: block;
+}
+label {
+    color: #333333;
+	font-size: 100%;
+	font-weight: bold;
+    padding-bottom: 5px;
+}
+input, select{
+	-webkit-transition: all 0.20s ease-in-out;
+  	-moz-transition: all 0.20s ease-in-out;
+ 	-ms-transition: all 0.20s ease-in-out;
+  	-o-transition: all 0.20s ease-in-out;
+	border: 1px solid #555555; /* Clear default styles */
+	-webkit-appearance: none; /* disable Safari default styles */
+	color: #555555;
+	font-size: 90%;
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+	box-sizing: border-box;
+}
+input:focus, select:focus, textarea:focus {
+	border: 1px solid #f05a23;	
+}
+input[type="text"]{
+    width: 100%;
+	max-width: 400px;
+    height: 35px;
+    padding: 3px 5px 2px 5px;
+}
+select {
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	-ms-appearance: none;
+	-o-appearance: none;
+    appearance: none;
+    width: 100%;
+	max-width: 400px;
+    height: 35px;
+    padding: 3px 5px 2px 5px;
+}
+/* IE10+ FOR removing drop-down arrow */
+select::-ms-expand {
+    display: none;
+}
+.selectWrapper {
+    position: relative;
+	max-width: 400px;
+}
+fieldset.form2col .selectWrapper, fieldset.form2col select {
+	max-width: none;
+}
+/* For font awesome v5 +, font weight is required */
+/* If font is not working, change the font weight */
+.selectWrapper:after {
+	content: "\f078";
+	font-family: "Font Awesome 5 Free";
+	font-weight: 600;
+	line-height: 35px;
+    width: 35px;
+    height: 35px; 
+    color: #ffffff;
+    background: #f05a23;
+    position: absolute; 
+	top: 21px;
+    right: 0; 
+    text-align: center;    
+    pointer-events: none;
+    z-index: 1;
+}
+input[type="submit"] {
+	background-color: #f05a23;
+	color: #ffffff;
+	font-family: 'YouYuan','Roboto', Arial, Verdana, Helvetica, sans-serif;
+	font-size: 20px;
+	border: 1px solid #ffffff;
+	padding: 5px;
+	width: 100px;
+	cursor: pointer;
+}
+input[type="submit"]:hover {
+	background-color: #666666;
+}
+/* ======================================================
+MAJOR CONTAINER LAYOUTS
+====================================================== */
+header {
+    width: 100%;
+	-webkit-box-shadow: 0 6px 6px -6px #cccccc;
+	-moz-box-shadow: 0 6px 6px -6px #cccccc;
+	box-shadow: 0 6px 6px -6px #cccccc;
+	background-color: #ffffff;
+    clear: both;
+	z-index: 999;
+	transition: all 0.2s ease-in-out;
+}
+header.fixed {
+	position: fixed;
+	top: 0;
+}
+main {
+	flex: 1 0 auto;
+	-ms-flex: 1 0 auto;
+    width: 100%;
+	background-color: #ffffff;
+    clear: both;
+    overflow: hidden;
+}
+header.fixed + main {
+	padding-top: 73px;
+}
+footer {
+	flex: 0 0 auto;
+	-ms-flex: 0 0 auto;
+    width: 100%;
+    background-color: #555555;
+    clear: both;
+    overflow: hidden;
+	z-index: 999;
+}
+/* ======================================================
+HEADER CONTAINER
+====================================================== */
+.header-container {
+    width: 100%;
+    margin: 0;
+	padding: 10px 0;
+	overflow: auto;
+    clear: both;
+}
+.header-left {
+	float: left;
+	width: 80%;
+	font-size: 25px;
+	font-weight: bold;
+}
+.header-right {
+	float: right;
+	width: 20%;
+}
+img.logo {
+	width: auto;
+	height: auto;
+	padding: 0 10px;
+	float: left;
+}
+.header-left span {
+	display: block;
+	line-height: 50px;
+}
+/* ======================================================
+FOOTER CONTAINER
+====================================================== */
+.footer-container {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+    width: 100%;
+    padding: 10px;
+    color: #ffffff;
+    clear: both;
+}
+.footer-container p {
+	font-size: 80%;
+    margin: 0;
+}
+
+/* ======================================================
+MAIN CONTAINER + COLUMNS
+====================================================== */
+.main-container {
+    width: auto;
+	max-width: 1920px;
+    margin: 0;
+    padding: 35px 10px 35px 80px;
+    clear: both;
+	overflow: auto;
+}
+.main-container .index {
+    padding: 35px 10px;
+}
+.section-container {
+	width: 100%;
+	max-width: 1000px;
+	clear: both;
+	overflow: hidden;
+}
+
+/* ======================================================
+PAGE STYLES
+====================================================== */
+.control-panel {
+	position: fixed;
+	top: 70px;
+	left: 0;
+	width: 55px;
+    height: 100%;
+    background-color: #f05a23;
+	z-index: 998;
+}
+ul.admin-menu {
+	font-size: 24px;
+	text-align: center;
+	padding-top: 20px;
+}
+ul.admin-menu li {
+	padding: 0;
+	position: relative;
+}
+ul.admin-menu li span.navi-icon {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+    display: block;
+    background: #fff;
+    color: #f05a23;
+    width: 32px;
+    height: 32px;
+    text-align: center;
+    line-height: 32px;
+    border-radius: 50%;
+    margin: 0 auto;
+    font-size: 20px;
+}
+ul.admin-menu li a {
+	display: block;
+	color: #ffffff;
+	text-decoration: none;
+	line-height: 100%;
+	padding: 12px 0;
+}
+ul.admin-menu li:hover a {
+	background-color: #555555;
+}
+ul.admin-submenu {
+	display: none;
+	position: absolute;
+	top: 0;
+    left: 55px; /* must equal to the width of control panel */
+    background: #d5501f;
+    min-width: 200px;
+    font-size: 17px;
+    text-align: left;
+}
+ul.admin-submenu li {
+	
+}
+ul.admin-submenu li a {
+	padding: 18px;
+}
+ul.admin-submenu li a:hover {
+	background-color: #333333;
+}
+ul.admin-submenu li a i {
+	display: inline-block;
+	padding-right: 5px;
+}
+ul.admin-menu li:hover > ul.admin-submenu{
+	display: block;
+}
+.nav-block {
+	display: block;
+    width: 30%;
+    max-width: 300px;
+    float: left;
+    margin: 15px;
+    overflow: hidden;
+    background: #f9f9f9;
+    border-radius: 15px;
+    padding: 25px;
+    border: 1px solid #f5f5f5;
+}
+.nav-block img.nav-img {
+	max-width: 300px;
+	padding-bottom: 25px;
+}
+.nav-block ul {
+	font-size: 22px;
+}
+.nav-block ul li {
+	padding-bottom: 15px;
+}
+.nav-block ul li:last-of-type {
+	padding-bottom: 0;
+}
+.nav-block ul li a {
+	display: block;
+}
+.nav-block ul li a:hover {
+	font-weight: bold;
+}
+.page-header {
+	width:100%;
+	overflow: hidden;
+	clear: both;
+	margin-bottom: 30px;
+}
+img.page-img {
+	width: 150px;
+	height: auto;
+	float: left;
+	background-color: #f8f8f8;
+	padding: 15px;
+	margin-right: 20px;
+	border-radius: 15px;
+}
+.page-header h2 {
+	margin: 0;
+	line-height: 90px;
+	color: red;
+	float: left;
+}
+.multi-selection, .single-selection {
+	width: 100%;
+	margin-bottom: 35px;
+	overflow: hidden;
+	clear: both;
+}
+p.instruction {
+	font-size: 18px;
+    background: #666;
+    color: #fff;
+    padding: 5px 10px;
+}
+span.ball-multi, span.ball-single {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+	border: 1px solid #f5f5f5;
+	border-radius: 50%;
+	display: block;
+	padding: 2px;
+	margin: 5px;
+	width: 40px;
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	cursor: pointer;
+	float: left;
+}
+span.ball-multi, span.ball-single {
+	background-color: #eee;
+}
+span.ball-multi:hover, span.ball-multi.active {
+	color: #fff;
+	background-color: blue;
+}
+span.ball-single:hover, span.ball-single.active {
+	color: #fff;
+	background-color: red;
+}
+.date-selector {
+	width: 100%;
+	margin-bottom: 25px;
+	overflow: hidden;
+	clear: both;
+}
+.date-selector .selectWrapper {
+	width: 100px;
+    float: left;
+    margin-right: 35px;
+}
+ul.list-data, p.data {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+	font-size: 22px;
+    max-width: 620px;
+}
+ul.list-data li {
+	padding: 20px 0 20px 10px;
+	border-bottom: 1px solid #eee;
+}
+ul.list-data li span.data-date, p.data span.data-date {
+	font-weight: bold;
+    margin-right: 35px;
+}
+ul.list-data li span.data-multi, ul.list-data li span.data-single, p.data span.data-multi, p.data span.data-single {
+	display: inline-block;
+    width: 50px;
+    height: 50px; 
+    line-height: 50px;
+	border-radius: 50%;
+    text-align: center;
+}
+ul.list-data li span.data-multi, p.data span.data-multi {
+	background-color: #f2f2f2;
+	margin-right: 15px;
+}
+ul.list-data li span.data-single, p.data span.data-single {
+	background-color: #f05a23;
+	color: #ffffff;
+}
+
+/* -------------------------- 
+PAGINATION 
+--------------------------*/
+.pagination-container {
+	width: 100%;
+	margin: 25px 0 15px 0;
+	font-size: 90%;
+	clear: both;
+	overflow: hidden;
+}
+.pagination-container a {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+	text-decoration: none;
+	text-align: center;
+    background: #888888;
+    color: #ffffff;
+    display: inline-block;
+    line-height: 20px;
+    width: 20px;
+	height: 20px;
+	border-radius: 50%;
+}
+.pagination-container a:hover {
+	background: #d5501f;
+}
+.pagination-container a.current {
+	background: #d5501f;
+}
+
+
+/* --------------------------
+REPORT PAGES 
+-------------------------- */
+h3.chart-title {
+	background-color: #d5501f;
+	color: #ffffff;
+	padding: 10px;
+	display: inline-block;
+	position: relative;
+}
+h3.chart-title::after {
+	content: '';
+    display: inline-block;
+    position: absolute;
+    right: -20px;
+    width: 0;
+    height: 0;
+    top: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 20px solid #d5501f;
+}
+.chart-section {
+	max-width: 1200px;
+	border-bottom: 1px solid #eee;
+	padding-bottom: 30px;
+	margin-bottom: 45px;
+}
+.chart-section:last-of-type {
+	border-bottom: none;
+}
+.message-container {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.message-container h1, p {
+	font-family: 'Roboto', Arial, Verdana, Helvetica, sans-serif;
+}
+/* ======================================================
+EXTRA STYLES
+====================================================== */
+
+
+
+
+
+
+
+
+
+
+
+

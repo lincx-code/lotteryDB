@@ -1,0 +1,12 @@
+@font-face {
+    font-family: 'YouYuan';
+    src: url('../fonts/YouYuan.eot');
+    src: url('../fonts/YouYuan.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/YouYuan.woff2') format('woff2'),
+        url('../fonts/YouYuan.woff') format('woff'),
+        url('../fonts/YouYuan.ttf') format('truetype'),
+        url('../fonts/YouYuan.svg#YouYuan') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
